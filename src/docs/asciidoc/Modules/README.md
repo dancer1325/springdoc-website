@@ -16,6 +16,21 @@
   * JSON
   * YAML
 
+## spring-webflux
+* Check image of modules
+* requires 
+```
+<dependency>
+<groupId>org.springdoc</groupId>
+<artifactId>springdoc-openapi-starter-webflux-api</artifactId>
+<version>2.3.0</version>
+</dependency>
+```
+* just valid
+  * JSON
+  * YAML
+
 # Note:
 * Check 'spring-openapi-demos' repo, under the project 
   * '/springdoc-openapi-book-service-webmvc' &
+  * '/springdoc-openapi-book-service-webflux' &
