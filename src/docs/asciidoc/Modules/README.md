@@ -42,8 +42,19 @@
 
 ---
 
+## Kotlin Support
+* ‘s modules ==  Java based’s modules
+* requires 
+```
+<dependency>
+<groupId>com.fasterxml.jackson.module</groupId>
+<artifactId>jackson-module-kotlin</artifactId>
+</dependency>
+```
+
 # Note:
 * Check 'spring-openapi-demos' repo, under the project 
   * '/springdoc-openapi-modules-webmvc' &
   * '/springdoc-openapi-modules-webflux' &
   * '/springdoc-openapi-modules-actuator' &
+  * '/springdoc-openapi-modules-kotlin' &
