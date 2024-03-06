@@ -42,6 +42,18 @@
 
 ---
 
+## spring-security or spring-authorization-server
+* `springdoc-openapi`
+  * allows
+    * ignoring `@AuthenticationPrincipal` of Spring Security
+    * exposing Oauth2 endpoints of Spring Authorization Server
+
+* if Spring Security or Spring Authorization Server &
+  * `spring-boot-starter-web` & you just want OpenAPI → `springdoc-openapi-starter-webmvc-api`
+  * `spring-boot-starter-web` & you want OpenAPI + SwaggerUI → `springdoc-openapi-starter-webmvc-ui`
+  * `spring-boot-starter-webflux` & you just want OpenAPI → `springdoc-openapi-starter-webflux-api`
+  * `spring-boot-starter-webflux` & you want OpenAPI + SwaggerUI → `springdoc-openapi-starter-webflux-ui`
+
 ## Kotlin Support
 * ‘s modules ==  Java based’s modules
 * requires 
@@ -57,4 +69,5 @@
   * '/springdoc-openapi-modules-webmvc' &
   * '/springdoc-openapi-modules-webflux' &
   * '/springdoc-openapi-modules-actuator' &
+  * '/springdoc-openapi-modules-securityorauthorizationserverwebmvc' & '/springdoc-openapi-modules-securityorauthorizationserverwebflux'
   * '/springdoc-openapi-modules-kotlin' &
