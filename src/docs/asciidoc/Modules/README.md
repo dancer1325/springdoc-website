@@ -76,4 +76,4 @@
   * '/springdoc-openapi-modules-actuator' &
   * '/springdoc-openapi-modules-securityorauthorizationserverwebmvc' & '/springdoc-openapi-modules-securityorauthorizationserverwebflux'
   * '/springdoc-openapi-modules-kotlin' &
-  * '/springdoc-openapi-modules-hateoas' &
+  * '/springdoc-openapi-modules-hateoas' & '/springdoc-openapi-hateoas-service'
