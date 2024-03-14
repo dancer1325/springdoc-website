@@ -45,8 +45,8 @@
 ## spring-security or spring-authorization-server
 * `springdoc-openapi`
   * allows
-    * ignoring `@AuthenticationPrincipal` of Spring Security
-    * exposing Oauth2 endpoints of Spring Authorization Server
+    * ignoring `@AuthenticationPrincipal` of Spring Security      -- TODO: --
+    * exposing Oauth2 endpoints of Spring Authorization Server    -- TODO: --
 
 * if Spring Security or Spring Authorization Server &
   * `spring-boot-starter-web` & you just want OpenAPI → `springdoc-openapi-starter-webmvc-api`
@@ -64,6 +64,11 @@
 </dependency>
 ```
 
+## spring-hateoas
+* it requires Spring Boot
+* If you need access to Open API endpoints (== JSON / YAML )→ `springdoc-openapi-starter-webmvc-api`
+* If you need access to Swagger UI (== HTML )→ `springdoc-openapi-starter-webmvc-ui`
+
 # Note:
 * Check 'spring-openapi-demos' repo, under the project 
   * '/springdoc-openapi-modules-webmvc' &
@@ -71,3 +76,4 @@
   * '/springdoc-openapi-modules-actuator' &
   * '/springdoc-openapi-modules-securityorauthorizationserverwebmvc' & '/springdoc-openapi-modules-securityorauthorizationserverwebflux'
   * '/springdoc-openapi-modules-kotlin' &
+  * '/springdoc-openapi-modules-hateoas' &
