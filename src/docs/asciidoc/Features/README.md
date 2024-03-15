@@ -1,10 +1,12 @@
 # Features
 
-## More information about document generation
+## Additional information
 * `@OpenAPIDefinition`
   * Swagger-Core
+  * API information
 * `@SecurityScheme`
   * Swagger-Core
+  * Security documentation
 
 
 ## 
