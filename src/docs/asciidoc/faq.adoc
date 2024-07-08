@@ -2,87 +2,79 @@
 == F.A.Q
 
 === How can I define multiple OpenAPI definitions in one Spring Boot project?
-You can define your own groups of API based on the combination of: API paths and packages to scan. Each group should have a unique `groupName`.
-The OpenAPI description of this group, will be available by default on:
 
-* `\http://server:port/context-path/v3/api-docs/groupName`
+* Defining a bean of type `GroupedOpenApi`
+    ** attributes
+        *** `group` == groupName
+        *** `pathsToMatch`
+        *** `packagesToScan`
+        *** ...
+    ** "http://server:port/context-path/v3/api-docs/groupName"
+        *** OpenAPI url / group
+* _Example:_ Check https://github.com/springdoc/springdoc-openapi/tree/main/springdoc-openapi-tests/springdoc-openapi-actuator-webmvc-tests/src/test/java/test/org/springdoc/api/app68[app68]
+    ** OpenAPI description URL at :  /v3/api-docs/**stores**
 
-To enable the support of multiple OpenAPI definitions, a bean of type `GroupedOpenApi` needs to be defined.
+    [source,java]
+    ----
+    @Bean
+    public GroupedOpenApi storeOpenApi() {
+       String paths[] = {"/store/**"};
+       return GroupedOpenApi.builder().group("stores").pathsToMatch(paths)
+             .build();
+    }
+    ----
 
-For the following Group definition(based on package path), the OpenAPI description URL will be :  /v3/api-docs/**stores**
+    ** OpenAPI description URL at /v3/api-docs/**users**
 
-[source,java]
-----
-@Bean
-public GroupedOpenApi storeOpenApi() {
-   String paths[] = {"/store/**"};
-   return GroupedOpenApi.builder().group("stores").pathsToMatch(paths)
-         .build();
-}
-----
+    [source,java]
+    ----
+    @Bean
+    public GroupedOpenApi userOpenApi() {
+       String packagesToscan[] = {"test.org.springdoc.api.app68.api.user"};
+       return GroupedOpenApi.builder().group("users").packagesToScan(packagesToscan)
+             .build();
+    }
+    ----
 
-For the following Group definition (based on package name), the OpenAPI description URL will be:  /v3/api-docs/**users**
+    ** OpenAPI description URL at /v3/api-docs/**pets**
 
-[source,java]
-----
-@Bean
-public GroupedOpenApi userOpenApi() {
-   String packagesToscan[] = {"test.org.springdoc.api.app68.api.user"};
-   return GroupedOpenApi.builder().group("users").packagesToScan(packagesToscan)
-         .build();
-}
-----
+    [source,java]
+    ----
+    @Bean
+    public GroupedOpenApi petOpenApi() {
+       String paths[] = {"/pet/**"};
+       return GroupedOpenApi.builder().group("pets").pathsToMatch(paths)
+             .build();
+    }
+    ----
 
-For the following Group definition(based on path), the OpenAPI description URL will be:  /v3/api-docs/**pets**
+    ** OpenAPI description URL at /v3/api-docs/**groups**
 
-[source,java]
-----
-@Bean
-public GroupedOpenApi petOpenApi() {
-   String paths[] = {"/pet/**"};
-   return GroupedOpenApi.builder().group("pets").pathsToMatch(paths)
-         .build();
-}
-----
-
-For the following Group definition (based on package name and path), the OpenAPI description URL will be:  /v3/api-docs/**groups**
-
-[source,java]
-----
-@Bean
-public GroupedOpenApi groupOpenApi() {
-   String paths[] = {"/v1/**"};
-   String packagesToscan[] = {"test.org.springdoc.api.app68.api.user", "test.org.springdoc.api.app68.api.store"};
-   return GroupedOpenApi.builder().group("groups").pathsToMatch(paths).packagesToScan(packagesToscan)
-         .build();
-}
-----
-
-For more details about the usage, you can have a look at the following sample Test:
-
-* link:https://github.com/springdoc/springdoc-openapi/tree/2.x/springdoc-openapi-starter-webmvc-api/src/test/java/test/org/springdoc/api/app68[https://github.com/springdoc/springdoc-openapi/tree/master/springdoc-openapi-webmvc-core/src/test/java/test/org/springdoc/api/app68, window="_blank"]
+    [source,java]
+    ----
+    @Bean
+    public GroupedOpenApi groupOpenApi() {
+       String paths[] = {"/v1/**"};
+       String packagesToscan[] = {"test.org.springdoc.api.app68.api.user", "test.org.springdoc.api.app68.api.store"};
+       return GroupedOpenApi.builder().group("groups").pathsToMatch(paths).packagesToScan(packagesToscan)
+             .build();
+    }
+    ----
 
 === How can I configure Swagger UI?
-* The support of the swagger official properties is available on `springdoc-openapi`.  See link:https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/[Official documentation, window="_blank"].
-
-* You can use the same swagger properties in the documentation as Spring Boot properties.
-
-NOTE: All these properties should be declared with the following prefix: `springdoc.swagger-ui`
+* `springdoc.swagger-ui.swaggerUIProperty`
+    ** Check link:https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/[Swagger UI Official documentation, window="_blank"].
 
 === How can I filter the resources documented in the output specification by the provided group?
-* You can use the standard `swagger-ui` property filter.
-[source,properties]
-----
-springdoc.swagger-ui.filter=group-a
-----
+* `springdoc.swagger-ui.filter=groupName`
+    ** `filter` is a SwaggerUI property -- https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md#display[Link] --
 
 === How can I disable/enable Swagger UI generation based on env variable?
-* This property helps you disable only the UI.
-[source,properties]
-----
-springdoc.swagger-ui.enabled=false
-----
+
+* `springdoc.swagger-ui.enabled=false`
+
 === How can I control the default expansion setting for the operations and tags, in the Swagger UI ,
+* TODO:
 * You can set this property in your application.yml like so for example:
 [source,properties]
 ----
