@@ -74,31 +74,24 @@
 * `springdoc.swagger-ui.enabled=false`
 
 === How can I control the default expansion setting for the operations and tags, in the Swagger UI ,
-* TODO:
-* You can set this property in your application.yml like so for example:
-[source,properties]
-----
-springdoc.swagger-ui.doc-expansion= none
-----
+* `springdoc.swagger-ui.doc-expansion= none`
+    ** Check https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md[swaggerUIConfiguration]
 
 === How can I change the layout of the `swagger-ui`?
-* For layout options, you can use swagger-ui configuration options. For example:
-[source,properties]
-----
-springdoc.swagger-ui.layout=BaseLayout
-----
+* `springdoc.swagger-ui.layout=BaseLayout`
+    ** Check https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md[swaggerUIConfiguration]
 
 === How can I sort endpoints alphabetically?
-* You can use the following `springdoc-openapi` properties:
-[source,properties]
-----
-#For sorting endpoints alphabetically
-springdoc.swagger-ui.operationsSorter=alpha
-#For sorting tags alphabetically
-springdoc.swagger-ui.tagsSorter=alpha
-----
+
+    #For sorting endpoints alphabetically
+    springdoc.swagger-ui.operationsSorter=alpha
+    #For sorting tags alphabetically
+    springdoc.swagger-ui.tagsSorter=alpha
+
+* Check https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md[swaggerUIConfiguration]
 
 === How can I disable the try it out button?
+* TODO:
 * You have to set the following property:
 [source,properties]
 ----
